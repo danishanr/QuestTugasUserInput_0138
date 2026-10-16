@@ -42,11 +42,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.integerResource
@@ -55,23 +53,40 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.R
-import kotlinx.coroutines.delay
+import com.example.questtugasuserinput.R
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.mutableStateListOf
+import java.util.Date
+import java.util.Locale
+import kotlinx.coroutines.delay
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormBiodata(){
-    val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val namaDepan by remember { mutableStateOf("") }
-    val namaBelakang by remember { mutableStateOf("") }
-    val email by remember { mutableStateOf("") }
-    val tglLahir by remember { mutableStateOf("") }
-    val experience by remember { mutableStateOf("") }
-    val skills by remember { mutableStateOf("") }
+    val snackbarMessageTemplate =
+        stringResource(R.string.snackbar_message)
+
+    val skillSeparator =
+        stringResource(R.string.skill_separator)
+
+    val datePattern =
+        stringResource(R.string.date_pattern)
+
+    var namaDepan by remember { mutableStateOf("") }
+    var namaBelakang by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var tglLahir by remember { mutableStateOf("") }
+    var experience by remember { mutableStateOf("") }
+    val skills = remember { mutableStateListOf<String>() }
 
     var showDatePicker by remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
@@ -277,20 +292,29 @@ fun FormBiodata(){
                             .fillMaxWidth()
                             .height(dimensionResource(R.dimen.button_height)),
                         onClick = {
-                            val message = context.getString(
-                                R.string.snackbar_message,
-                                namaDepan, namaBelakang, email, tglLahir, experience,
-                                skills.joinToString(context.getString(R.string.skill_separator))
+                            val skillText = skills.joinToString(skillSeparator)
+
+                            val message = String.format(
+                                Locale.getDefault(),
+                                snackbarMessageTemplate,
+                                namaDepan,
+                                namaBelakang,
+                                email,
+                                tglLahir,
+                                experience,
+                                skillText
                             )
                             scope.launch {
-                                val job = launch {
+                                val snackbarJob = launch {
                                     snackbarHostState.showSnackbar(
                                         message = message,
                                         duration = SnackbarDuration.Indefinite
                                     )
                                 }
+
                                 delay(snackbarDurationMs.toLong())
-                                job.cancel()
+                                snackbarHostState.currentSnackbarData?.dismiss()
+                                snackbarJob.cancel()
                             }
                         }
                     ) {
@@ -309,8 +333,10 @@ fun FormBiodata(){
             confirmButton = {
                 TextButton(onClick = {
                     datePickerState.selectedDateMillis?.let { millis ->
-                        val pattern = context.getString(R.string.date_pattern)
-                        tglLahir = SimpleDateFormat(pattern, Locale.getDefault()).format(Date(millis))
+                        tglLahir = SimpleDateFormat(
+                            datePattern,
+                            Locale.getDefault()
+                        ).format(Date(millis))
                     }
                     showDatePicker = false
                 }) { Text(stringResource(R.string.dialog_ok)) }
