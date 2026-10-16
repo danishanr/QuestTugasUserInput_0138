@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -228,10 +229,33 @@ fun FormBiodata(){
                             }
                         }
                     }
-
+                    Spacer(Modifier.height(dimensionResource(R.dimen.space_medium)))
+                    Text(
+                        text = stringResource(R.string.label_skill),
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        skillOptions.forEach { skill ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Checkbox(
+                                    checked = skills.contains(skill),
+                                    onCheckedChange = { checked ->
+                                        if (checked) skills.add(skill) else skills.remove(skill)
+                                    }
+                                )
+                                Text(skill, style = MaterialTheme.typography.bodySmall)
+                            }
+                        }
+                    }
+                    Spacer(Modifier.height(dimensionResource(R.dimen.space_large)))
                 }
             }
-
         }
     }
 }
