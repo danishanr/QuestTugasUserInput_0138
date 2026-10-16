@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_height">260dp</dimen>
+    <dimen name="sheet_offset_top">230dp</dimen>
+    <dimen name="sheet_corner">32dp</dimen>
+    <dimen name="sheet_elevation">8dp</dimen>
+</resources>
