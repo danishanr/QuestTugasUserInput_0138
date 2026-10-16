@@ -290,6 +290,11 @@ fun FormBiodata(){
                             }
                         }
                     ) {
+                        Text(
+                            text = stringResource(R.string.btn_proceed),
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
         }
