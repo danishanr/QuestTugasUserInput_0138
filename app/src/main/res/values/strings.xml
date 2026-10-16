@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">QuestTugasUserInput</string>
+    <string name="title_form">Form Biodata</string>
+    <string name="subtitle_form">Silahkan isi biodata Anda di bawah ini !!!</string>
+    <string name="hint_nama_depan">Nama Depan</string>
+    <string name="hint_nama_belakang">Nama Belakang</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_tgl_lahir">Tgl Lahir</string>
+    <string name="hint_experience">Experience</string>
+    <string name="label_skill">Pilih Skill Anda :</string>
+    <string name="btn_proceed">Proceed</string>
+    <string name="cd_header_image">Gambar header</string>
+    <string name="cd_pilih_tanggal">Pilih tanggal lahir</string>
+    <string name="date_pattern">dd/MM/yyyy</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Batal</string>
+    <string name="skill_separator">, </string>
+    <string name="snackbar_message">Nama : %1$s %2$s\nEmail : %3$s\nTgl Lahir : %4$s\nExperience : %5$s\nSkill : %6$s</string>
 </resources>
