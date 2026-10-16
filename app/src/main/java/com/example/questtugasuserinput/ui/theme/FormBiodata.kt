@@ -28,6 +28,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -52,6 +53,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun FormBiodata(){
@@ -275,6 +278,18 @@ fun FormBiodata(){
                                 namaDepan, namaBelakang, email, tglLahir, experience,
                                 skills.joinToString(context.getString(R.string.skill_separator))
                             )
+                            scope.launch {
+                                val job = launch {
+                                    snackbarHostState.showSnackbar(
+                                        message = message,
+                                        duration = SnackbarDuration.Indefinite
+                                    )
+                                }
+                                delay(snackbarDurationMs.toLong())
+                                job.cancel()
+                            }
+                        }
+                    ) {
                 }
             }
         }
