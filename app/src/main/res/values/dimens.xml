@@ -9,5 +9,8 @@
     <dimen name="button_corner">24dp</dimen>
     <dimen name="button_height">56dp</dimen>
     <dimen name="space_small">8dp</dimen>
-
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="dot_size">8dp</dimen>
+    <dimen name="dots_padding">16dp</dimen>
 </resources>
