@@ -16,6 +16,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
@@ -254,6 +256,25 @@ fun FormBiodata(){
                         }
                     }
                     Spacer(Modifier.height(dimensionResource(R.dimen.space_large)))
+
+                    Button(
+                        enabled = isValid,
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.purple_button),
+                            contentColor = colorResource(R.color.white),
+                            disabledContainerColor = colorResource(R.color.gray_disabled),
+                            disabledContentColor = colorResource(R.color.white)
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(R.dimen.button_height)),
+                        onClick = {
+                            val message = context.getString(
+                                R.string.snackbar_message,
+                                namaDepan, namaBelakang, email, tglLahir, experience,
+                                skills.joinToString(context.getString(R.string.skill_separator))
+                            )
                 }
             }
         }
