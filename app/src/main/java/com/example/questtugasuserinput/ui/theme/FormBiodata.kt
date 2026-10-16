@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,6 +40,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.R
 
 @Composable
@@ -131,6 +133,14 @@ fun FormBiodata(){
                         fontWeight = FontWeight.Bold,
                         color = colorResource(R.color.purple_title)
                     )
+                    Spacer(Modifier.height(dimensionResource(R.dimen.space_small)))
+                    Text(
+                        text = stringResource(R.string.subtitle_form),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = colorResource(R.color.gray_subtitle),
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(Modifier.height(dimensionResource(R.dimen.space_large)))
                 }
             }
 
