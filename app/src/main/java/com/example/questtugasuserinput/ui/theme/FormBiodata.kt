@@ -1,11 +1,16 @@
 package com.example.questtugasuserinput.ui.theme
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -66,6 +71,24 @@ fun FormBiodata(){
                     .fillMaxWidth()
                     .height(dimensionResource(R.dimen.header_height))
             )
+
+            Row(
+                modifier = Modifier.padding(dimensionResource(R.dimen.dots_padding)),
+                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.space_small))
+            ) {
+                repeat(integerResource(R.integer.dot_count)) { index ->
+                    Box(
+                        modifier = Modifier
+                            .size(dimensionResource(R.dimen.dot_size))
+                            .background(
+                                color = colorResource(
+                                    if (index == 0) R.color.dot_active else R.color.dot_inactive
+                                ),
+                                shape = CircleShape
+                            )
+                    )
+                }
+            }
 
 
 
