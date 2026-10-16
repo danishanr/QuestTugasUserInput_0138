@@ -16,6 +16,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -171,6 +173,26 @@ fun FormBiodata(){
                         label = { Text(stringResource(R.string.hint_email)) },
                         modifier = Modifier.fillMaxWidth()
                     )
+                    Spacer(Modifier.height(dimensionResource(R.dimen.space_medium)))
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.space_small))) {
+                        OutlinedTextField(
+                            value = tglLahir,
+                            onValueChange = {},
+                            readOnly = true,
+                            singleLine = true,
+                            shape = fieldShape,
+                            label = { Text(stringResource(R.string.hint_tgl_lahir)) },
+                            trailingIcon = {
+                                IconButton(onClick = { showDatePicker = true }) {
+                                    Icon(
+                                        imageVector = Icons.Default.DateRange,
+                                        contentDescription = stringResource(R.string.cd_pilih_tanggal)
+                                    )
+                                }
+                            },
+                            modifier = Modifier.weight(1f)
+                        )
 
                 }
             }
