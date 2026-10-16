@@ -4,4 +4,10 @@
     <dimen name="sheet_offset_top">230dp</dimen>
     <dimen name="sheet_corner">32dp</dimen>
     <dimen name="sheet_elevation">8dp</dimen>
+    <dimen name="sheet_padding">24dp</dimen>
+    <dimen name="field_corner">24dp</dimen>
+    <dimen name="button_corner">24dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+
 </resources>
