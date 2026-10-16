@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -102,6 +103,13 @@ fun FormBiodata(){
                             topEnd = dimensionResource(R.dimen.sheet_corner)
                         )
                     )
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = dimensionResource(R.dimen.sheet_corner),
+                            topEnd = dimensionResource(R.dimen.sheet_corner)
+                        )
+                    )
+                    .background(colorResource(R.color.sheet_background))
 
 
 
