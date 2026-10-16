@@ -152,6 +152,14 @@ fun FormBiodata(){
                             label = { Text(stringResource(R.string.hint_nama_depan)) },
                             modifier = Modifier.weight(1f)
                         )
+                        OutlinedTextField(
+                            value = namaBelakang,
+                            onValueChange = { namaBelakang = it },
+                            singleLine = true,
+                            shape = fieldShape,
+                            label = { Text(stringResource(R.string.hint_nama_belakang)) },
+                            modifier = Modifier.weight(1f)
+                        )
 
                 }
             }
