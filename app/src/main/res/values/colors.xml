@@ -9,4 +9,6 @@
     <color name="dot_inactive">#FF757575</color>
     <color name="header_dark">#FF1A0B2E</color>
     <color name="header_glow">#FF9C27B0</color>
+    <color name="gray_disabled">#FFE0E0E0</color>
+    <color name="black">#FF000000</color>
 </resources>
