@@ -22,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -89,6 +90,18 @@ fun FormBiodata(){
                     )
                 }
             }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = dimensionResource(R.dimen.sheet_offset_top))
+                    .shadow(
+                        dimensionResource(R.dimen.sheet_elevation),
+                        RoundedCornerShape(
+                            topStart = dimensionResource(R.dimen.sheet_corner),
+                            topEnd = dimensionResource(R.dimen.sheet_corner)
+                        )
+                    )
 
 
 
